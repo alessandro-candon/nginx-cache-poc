@@ -18,7 +18,8 @@ class SoSlowController extends AbstractController
         $timeStart = time();
         sleep(2);
         return $this->json([
-            'ok' => time() - $timeStart
+            'ok' => time() - $timeStart,
+            'id' => rand()
         ]);
     }
 
@@ -28,7 +29,8 @@ class SoSlowController extends AbstractController
         $timeStart = time();
         sleep(2);
         return $this->json([
-            'ok' => time() - $timeStart
+            'ok' => time() - $timeStart,
+            'id' => rand()
         ]);
     }
 }
