@@ -1,5 +1,11 @@
 # Use NGINX to cache API Response
 
+Here is the difference form cahced slow controller and not chached.
+
+https://user-images.githubusercontent.com/44228481/193539029-1ceb06b0-9b33-4073-81a6-487231edb1c3.mov
+
+Incredibles preformances on local machine.
+
 ## Nginx 
 
 The hearth of nginx cache is in this [file](.build/server.config) :
