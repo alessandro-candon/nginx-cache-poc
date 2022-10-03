@@ -52,9 +52,7 @@ class ResponseEventHandler implements EventSubscriberInterface
         $response->setPublic()
             ->setMaxAge($viewAttribute->maxAge);
 
-        if (!$request->headers->has('X-Purge')) {
-            $response->headers->set('X-Webserver-Cache', "true");
-        }
+        $response->headers->set('X-Webserver-Cache', "true");
     }
 
     /**
