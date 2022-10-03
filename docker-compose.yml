@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  php-fpm:
+    working_dir: /app
+    ports: [ '9000:9000' ]
+    build:
+      context: .
+      target: php_dev
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app:cached
+      - ./bin:/app/bin:consistent
+      - ./config:/app/config:consistent
+      - ./public:/app/public:consistent
+      - ./src:/app/src:consistent
+      - ./var:/app/var:consistent
+  nginx:
+    image: nginx:stable
+    ports: ['9999:80']
+    depends_on:
+      - php-fpm
+    command: ['nginx', '-g', 'daemon off;']
+    volumes:
+      - ./.build/server.config:/etc/nginx/conf.d/default.conf
+      - ./.build/nginx.config:/etc/nginx/nginx.conf
+      - ./var/log/nginx:/var/log/nginx
