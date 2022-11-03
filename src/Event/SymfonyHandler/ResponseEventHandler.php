@@ -33,7 +33,6 @@ class ResponseEventHandler implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::VIEW       => 'onView',
             KernelEvents::RESPONSE   => 'onResponse',
             KernelEvents::CONTROLLER => 'onController',
         ];
@@ -49,7 +48,8 @@ class ResponseEventHandler implements EventSubscriberInterface
             return;
         }
 
-        $response->setPublic()
+        $response
+            ->setPublic()
             ->setMaxAge($viewAttribute->maxAge);
 
         $response->headers->set('X-Webserver-Cache', "true");
